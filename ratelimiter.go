@@ -8,6 +8,7 @@ import (
 )
 
 type RateLimiter struct {
+	rate          float64
 	interval      float64
 	maxPermits    float64
 	storedPermits float64
@@ -27,6 +28,7 @@ func (m *RateLimiter) SetRate(rate float64) error {
 
 	m.mut.Lock()
 	defer m.mut.Unlock()
+	m.rate = rate
 	m.maxPermits = rate
 	m.interval = 1000000.0 / rate
 
@@ -34,7 +36,7 @@ func (m *RateLimiter) SetRate(rate float64) error {
 }
 
 func (m *RateLimiter) GetRate() float64 {
-	return 1000000.0 / m.interval
+	return m.rate
 }
 
 func (m *RateLimiter) Aquire(permits int) error {
