@@ -67,7 +67,7 @@ func (m *ratelimiter) TryAcquire(permits float64, timeout int64) bool {
 	now := m.nowMicroSecond()
 
 	m.mut.Lock()
-	if m.storedPermits+m.futurePermits(now+timeout*1000) < permits {
+	if m.storedPermits+m.futurePermits(now+timeout) < permits {
 		m.mut.Unlock()
 		return false
 	}
