@@ -1,4 +1,4 @@
-# Description
+# Description [![Build Status](https://travis-ci.org/nncm/ratelimiter.svg?branch=master)](https://travis-ci.org/nncm/ratelimiter)
 
 ratelimiter is a simple golang implementation of a thread safe, basic rate limiter.
 
