@@ -58,8 +58,7 @@ func (m *RateLimiter) TryAcquire(permits int, timeout int) bool {
 		return false
 	}
 
-	nowTime := time.Now()
-	now := nowTime.Unix()*1e6 + int64(nowTime.Nanosecond())/1e3
+	now := time.Now().UnixNano() / 1000
 	if m.nextFree > now+int64(timeout)*1000 {
 		return false
 	}
@@ -80,9 +79,7 @@ func (m *RateLimiter) claimNext(permits float64) int64 {
 	m.mut.Lock()
 	defer m.mut.Unlock()
 
-	nowTime := time.Now()
-	now := nowTime.Unix()*1e6 + int64(nowTime.Nanosecond())/1e3
-
+	now := time.Now().UnixNano() / 1000
 	m.sync(now)
 
 	wait := m.nextFree - now
