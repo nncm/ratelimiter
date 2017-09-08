@@ -1,4 +1,4 @@
-# Description [![Build Status]
+# Description
 
 ratelimiter is a simple golang implementation of a thread safe, basic rate limiter.
 
