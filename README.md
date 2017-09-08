@@ -33,4 +33,4 @@ For the timeout blocking:
 limiter->try_aquire(2, 3000); // aquires 2 permit, and max timeout is 3000us
 ```
 
-On both cases, if try_aquire can aquire it's permits within the specified time (from now), it will block as long as necessary by the rate limiter, and then return true when it has aquired the permits. If it cannot aquire those permits within the specified time, then it will return IMMEDIATELY, with a value of false.
+On both cases, if TryAquire can aquire it's permits within the specified time (from now), it will block as long as necessary by the rate limiter, and then return true when it has aquired the permits. If it cannot aquire those permits within the specified time, then it will return IMMEDIATELY, with a value of false.
