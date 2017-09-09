@@ -24,14 +24,14 @@ There are two ways to aquire permits:
 For the basic blocking:
 
 ```
-limiter->aquire(1) // aquires 1 permit. Will block the thread until it is allowed to proceed
+limiter.aquire(1) // aquires 1 permit. Will block the thread until it is allowed to proceed
 ```
 
 For the timeout blocking:
 
 ```
-limiter->try_aquire(2, 0)    // aquires 2 permit with noblocking
-limiter->try_aquire(2, 3000) // aquires 2 permit, and max timeout is 3000us
+limiter.try_aquire(2, 0)    // aquires 2 permit with noblocking
+limiter.try_aquire(2, 3000) // aquires 2 permit, and max timeout is 3000us
 ```
 
 If TryAquire can aquire it's permits within the specified time (from now), it will block as long as necessary by the rate limiter, and then return true when it has aquired the permits. If it cannot aquire those permits within the specified time, then it will return IMMEDIATELY, with a value of false.
